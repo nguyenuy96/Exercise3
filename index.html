@@ -1,30 +1,126 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-<meta charset="ISO-8859-1">
-<link href="css/mymap.css" rel="stylesheet" />
-	<script>
-			h
-	</script>
-<title>MyMap</title>
+  <meta charset="utf-8">
+  <title>MyProject</title>
+  <base href="/">
+  <style>
+    .gridbutton {
+      display: grid;
+      grid-template-columns: 50px 50px 50px 50px;
+      grid-column-gap: 5px;
+      grid-row-gap: 5px;
+    }
+
+    #inputField {
+      grid-column-start: 1;
+      grid-column-end: 5;
+      height: 35px;
+      grid-row-start: 1;
+      grid-row-end: 5;
+    }
+  </style>
+  <script>
+    var myCalculations = {
+      add: "add",
+      sub: "sub",
+      mul: "mul",
+      div: "div"
+    }
+    var cals = new Object();
+    var valOfNumber = "";
+    var valueOfNumberArray = [];
+    var calculation = "";
+    var calculationArry = [];
+    function valueOfNumber(number, calcu) {
+      valOfNumber += number;
+      if (valueOfNumberArray < 1) {
+
+      } else {
+        valueOfCalculation();
+      }
+    }
+
+    function pushValueOfNumber() {
+      valueOfNumberArray.push(valOfNumber);
+    }
+
+
+
+    function valueOfCalculation() {
+      calculationArry.push(calculation);
+    }
+    function pushCalculation(calculation) {
+      if (valOfNumber == "") {
+      } else {
+        this.calculation = calculation;
+        pushValueOfNumber();
+        takeCalculations();
+        valOfNumber = "";
+      }
+    }
+    var tempResult = "";
+    function takeCalculations() {
+      if (valueOfNumberArray.length < 2 && calculationArry.length < 1) {
+        tempResult = valueOfNumberArray[0];
+      } else {
+        for (i = 0; i < valueOfNumberArray.length; i++) {
+          for (j = i; j < valueOfNumberArray.length - 1; j++) {
+            if (calculationArry[j] == "add") {
+              tempResult = parseInt(tempResult) + parseInt(valueOfNumberArray[i + 1]);
+            }
+            if (calculationArry[j] == "sub") {
+              tempResult = parseInt(tempResult) - parseInt(valueOfNumberArray[i + 1]);
+            }
+            if (calculationArry[j] == "mul") {
+              tempResult = parseInt(tempResult) * parseInt(valueOfNumberArray[i + 1]);
+            }
+            if (calculationArry[j] == "div") {
+              tempResult = parseInt(tempResult) / parseInt(valueOfNumberArray[i + 1]);
+            }
+          }
+        }
+        alert(tempResult);
+        
+      }
+      tempResult = "";
+    }
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+
 <body>
-	<div id="map"></div>
-	<div>
-		<input id="city">
-		<button id="submit" onclick="loadDT()">Search</button>
-	</div>
-	<div >
-	<img src="" id="imageWeather">
-	<h3 id="displayInfo"></h3>
-	</div>
+  <app-root></app-root>
+  <div>
 
-
-	<script src="js/mymap.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-ZvvnVtXUze0qWKtV90P5UBlB0TpXHXU&callback=initMap"></script>
-
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <div class="gridbutton" style="margin: 0.5%">
+      <input id="inputField">
+      <button class="btn btn-primary" onclick="">C</button>
+      <button class="btn btn-primary" onclick="">&#8592;</button>
+      <button class="btn btn-primary">x
+        <sup>2</sup>
+      </button>
+      <button class="btn btn-primary" onclick="">&#8730;</button>
+      <button class="btn btn-primary" onclick="valueOfNumber(1)">1</button>
+      <button class="btn btn-primary" onclick="valueOfNumber(2)">2</button>
+      <button class="btn btn-primary" onclick="valueOfNumber(3)">3</button>
+      <button class="btn btn-primary" onclick="pushCalculation('add')">+</button>
+      <button class="btn btn-primary" onclick="valueOfNumber(4)">4</button>
+      <button class="btn btn-primary" onclick="valueOfNumber(5)">5</button>
+      <button class="btn btn-primary" onclick="valueOfNumber(6)">6</button>
+      <button class="btn btn-primary" onclick="pushCalculation('sub')">-</button>
+      <button class="btn btn-primary" onclick="valueOfNumber(7)">7</button>
+      <button class="btn btn-primary" onclick="valueOfNumber(8)">8</button>
+      <button class="btn btn-primary" onclick="valueOfNumber(9)">9</button>
+      <button class="btn btn-primary" onclick="pushCalculation('mul')">x</button>
+      <button class="btn btn-primary" onclick="valueOfNumber(0)">0</button>
+      <button class="btn btn-primary" onclick="">.</button>
+      <button class="btn btn-primary" onclick="textFunction()">=</button>
+      <button class="btn btn-primary" onclick="pushCalculation('div')">/</button>
+    </div>
+  </div>
 </body>
+
 </html>
